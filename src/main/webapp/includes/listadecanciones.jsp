@@ -14,17 +14,17 @@
 <html>
     <!--Colocar como value: nombre de la presente página -->
     <jsp:include page="/static/head.jsp">
-        <jsp:param name="title" value="Bienvenido"/>
+        <jsp:param name="title" value="Canciones"/>
     </jsp:include>
     <body>
         <div class='container'>
             <!--Colocar como value: artistas, canciones, bandas, tours o tpc  (dependiendo de la pagina a la que corresponda) -->
             <jsp:include page="/includes/navbar.jsp">
-                <jsp:param name="page" value="/includes/listadecanciones.jpg"/>
+                <jsp:param name="page" value="canciones"/>
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h1 class='text-light'>Bienvenido, este es un ejemplo de tabla:</h1>
+                    <h1 class='text-light'>Lista de canciones</h1>
                 </div>
             </div>
             <div class="tabla">
@@ -34,7 +34,7 @@
                             <th>ID</th>
                             <th>CANCION</th>
                             <th>BANDA</th>
-                            <th>Ver</th>
+
                         </tr>
                     </thead>
 
@@ -48,8 +48,7 @@
                             </td>
                             <td><%=cancion.getNombre_banda()%>
                             </td>
-                            <td><a>Mas de la banda</a>
-                            </td>
+
                         </tr>
                         <% i++;
                         } %>

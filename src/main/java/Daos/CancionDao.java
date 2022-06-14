@@ -11,7 +11,7 @@ public class CancionDao {
 
         String user = "root";
         String pass = "root";
-        String url = "jdbc:mysql://localhost:3306/hr";
+        String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -21,9 +21,9 @@ public class CancionDao {
 
         try (Connection connection = DriverManager.getConnection(url, user, pass);
              Statement stmt = connection.createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT idcancion as 'ID', nombre_cancion as 'Cancion', nombre_banda as 'Banda' " +
-                     "FROM cancion c inner join banda b on (c.banda = b.idbanda) " +
-                     "ORDER by idcancion;");) {
+             ResultSet rs = stmt.executeQuery("SELECT idcancion , nombre_cancion , nombre_banda\n" +
+                     "FROM cancion c inner join banda b on (c.banda = b.idbanda)\n" +
+                     "ORDER by idcancion");) {
 
             while (rs.next()) {
                 Cancion cancion = new Cancion();
