@@ -13,11 +13,29 @@ import java.util.ArrayList;
 public class listaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        CancionDao cancionDao = new CancionDao();
-        ArrayList<Cancion> listaCanciones = cancionDao.listarCanciones();
-        request.setAttribute("lista", listaCanciones);
-        RequestDispatcher view = request.getRequestDispatcher("/includes/listadecanciones.jsp");
-        view.forward(request, response);
+
+        String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
+
+        switch(action){
+            case "listar" -> {
+                CancionDao cancionDao = new CancionDao();
+                ArrayList<Cancion> listaCanciones = cancionDao.listarCanciones();
+                request.setAttribute("lista", listaCanciones);
+                RequestDispatcher view = request.getRequestDispatcher("/includes/listadecanciones.jsp");
+                view.forward(request, response);
+            }
+            case "abrirFavoritos" -> {
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/includes/cancionesFavoritas.jsp");
+                requestDispatcher.forward(request, response);
+            }
+            case "addFavorito" -> {
+
+            }
+            case "deleteFavorito" -> {
+
+            }
+        }
+
     }
 
     @Override

@@ -24,8 +24,7 @@
             </jsp:include>
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
-                    <h1 class='text-light'>Lista de canciones</h1>
-                    <a href="<%=request.getContextPath()%>/listaCanciones?a=abrirFavoritos" class="btn btn-success ms-auto">Ver favoritos</a>
+                    <h1 class='text-light'>Favoritos</h1>
                 </div>
             </div>
             <div class="tabla">
@@ -41,23 +40,20 @@
                     </thead>
 
                     <tbody>
-                        <% int i = 1;
-                            for (Cancion cancion : listaCanciones) { %>
                         <tr>
-                            <td><%=cancion.getIdCancion()%>
+                            <td><h3>CANCION</h3>
                             </td>
-                            <td><%=cancion.getNombre_cancion()%>
+                            <td><h3>CANCION</h3>
                             </td>
-                            <td><%=cancion.getNombre_banda()%>
+                            <td><h3>CANCION</h3>
                             </td>
-                            <td><a class="btn btn-success ms-auto">Me gusta</a>
-                                <button type="submit" class="btn btn-success ms-auto">Me gusta</button>
+                            <td><button name="button" style = background-color:green>Ya no me gusta</button>
                             </td>
                         </tr>
-                        <% i++;
-                        } %>
+
                     </tbody>
                 </table>
+                <a href="<%=request.getContextPath()%>/listaCanciones" class="btn btn-success ms-auto">Regresar</a>
             </div>
         </div>
         <jsp:include page="/static/scripts.jsp"/>
