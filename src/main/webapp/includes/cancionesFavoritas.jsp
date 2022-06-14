@@ -35,22 +35,25 @@
                             <th>CANCION</th>
                             <th>BANDA</th>
                             <th>Ver</th>
-
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td><h3>CANCION</h3>
+                        <% int i = 1;
+                            for (Cancion cancion : listaCanciones) { %>
+                        <tr method="POST" action="<%=request.getContextPath()%>/listaCanciones?a=addFavorito">
+                            <td name="idCancion" id="idCancion"><%=cancion.getIdCancion()%>
+                            </td >
+                            <td name="nameCancion" id="nameCancion"><%=cancion.getNombre_cancion()%>
                             </td>
-                            <td><h3>CANCION</h3>
+                            <td name="bandaCancion" id="bandaCancion"><%=cancion.getNombre_banda()%>
                             </td>
-                            <td><h3>CANCION</h3>
-                            </td>
-                            <td><button name="button" style = background-color:green>Ya no me gusta</button>
+                            <td name="esFavorito" id="esFavorito">
+                                <button name="button" style = background-color:darkred>Ya no me gusta</button>
                             </td>
                         </tr>
-
+                        <% i++;
+                        } %>
                     </tbody>
                 </table>
                 <a href="<%=request.getContextPath()%>/listaCanciones" class="btn btn-success ms-auto">Regresar</a>

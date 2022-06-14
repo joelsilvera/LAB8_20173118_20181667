@@ -1,6 +1,8 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="Beans.Cancion" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<jsp:useBean id="cancion" scope="request" type=""
+<%--
   Created by IntelliJ IDEA.
   User: joels
   Date: 13/06/2022
@@ -25,7 +27,7 @@
             <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
                 <div class="col-lg-6">
                     <h1 class='text-light'>Lista de canciones</h1>
-                    <a href="<%=request.getContextPath()%>/listaCanciones?a=abrirFavoritos" class="btn btn-success ms-auto">Ver favoritos</a>
+                    <a href="<%=request.getContextPath()%>/listaCanciones?a=listarFavoritos" class="btn btn-success ms-auto">Ver favoritos</a>
                 </div>
             </div>
             <div class="tabla">
@@ -36,14 +38,13 @@
                             <th>CANCION</th>
                             <th>BANDA</th>
                             <th>Ver</th>
-
                         </tr>
                     </thead>
 
                     <tbody>
                         <% int i = 1;
                             for (Cancion cancion : listaCanciones) { %>
-                        <tr method="POST" action="<%=request.getContextPath()%>/listaCanciones?a=addFavorito">
+                        <tr>
                             <td name="idCancion" id="idCancion"><%=cancion.getIdCancion()%>
                             </td >
                             <td name="nameCancion" id="nameCancion"><%=cancion.getNombre_cancion()%>
@@ -52,10 +53,9 @@
                             </td>
                             <td name="esFavorito" id="esFavorito">
                                 <%if(cancion.getEs_favorito().equalsIgnoreCase("No")){%>
-                                    <!--<td><a class="btn btn-success ms-auto">Me gusta</a>-->
-                                    <button type="submit" class="btn btn-success ms-auto">Me gusta</button>
+                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=editarFavorito&id=<%=cancion.getIdCancion()%>" class="btn btn-success ms-auto">Me gusta</a>
                                 <%}else{%>
-                                    <button name="button" style = background-color:darkred>Ya no me gusta</button>
+                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=editarFavorito&id=<%=cancion.getIdCancion()%>" class="btn btn-danger">Ya no me gusta</a>
                                 <%}%>
                             </td>
                         </tr>
