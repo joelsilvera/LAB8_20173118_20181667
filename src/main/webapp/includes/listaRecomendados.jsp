@@ -49,7 +49,7 @@
         <td><%=recomendado.getNombre_banda()%>
         </td>
         <td>
-        <a class="btn btn-success" href="">Más de la banda</a>
+        <a class="btn btn-success" href="<%request.getContextPath()%>/listaCanciones">Más de la banda</a>
         </td>
         </tr>
         <%}%>
