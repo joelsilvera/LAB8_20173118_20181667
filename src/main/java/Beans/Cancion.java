@@ -5,6 +5,9 @@ public class Cancion {
     private String nombre_cancion;
     private String nombre_banda;
 
+    public Cancion(){
+
+    }
 
     public Cancion(int idCancion, String nombre_cancion, String nombre_banda) {
         this.idCancion = idCancion;
