@@ -43,15 +43,20 @@
                     <tbody>
                         <% int i = 1;
                             for (Cancion cancion : listaCanciones) { %>
-                        <tr>
-                            <td><%=cancion.getIdCancion()%>
+                        <tr method="POST" action="<%=request.getContextPath()%>/listaCanciones?a=addFavorito">
+                            <td name="idCancion" id="idCancion"><%=cancion.getIdCancion()%>
+                            </td >
+                            <td name="nameCancion" id="nameCancion"><%=cancion.getNombre_cancion()%>
                             </td>
-                            <td><%=cancion.getNombre_cancion()%>
+                            <td name="bandaCancion" id="bandaCancion"><%=cancion.getNombre_banda()%>
                             </td>
-                            <td><%=cancion.getNombre_banda()%>
-                            </td>
-                            <td><a class="btn btn-success ms-auto">Me gusta</a>
-                                <button type="submit" class="btn btn-success ms-auto">Me gusta</button>
+                            <td name="esFavorito" id="esFavorito">
+                                <%if(cancion.getEs_favorito().equalsIgnoreCase("No")){%>
+                                    <!--<td><a class="btn btn-success ms-auto">Me gusta</a>-->
+                                    <button type="submit" class="btn btn-success ms-auto">Me gusta</button>
+                                <%}else{%>
+                                    <button name="button" style = background-color:darkred>Ya no me gusta</button>
+                                <%}%>
                             </td>
                         </tr>
                         <% i++;

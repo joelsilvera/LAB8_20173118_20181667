@@ -28,18 +28,44 @@ public class listaServlet extends HttpServlet {
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/includes/cancionesFavoritas.jsp");
                 requestDispatcher.forward(request, response);
             }
-            case "addFavorito" -> {
+            case  ""-> {
 
             }
             case "deleteFavorito" -> {
-
             }
         }
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("a") == null ? "listar" : request.getParameter("a");
+        switch(action){
+            case "addFavorito" -> {
+                String idCancionStr = request.getParameter("idCancion");
+                String nameCancion = request.getParameter("nameCancion");
+                String bandaCancion = request.getParameter("bandaCancion");
+                String esFavorito = request.getParameter("esFavorito");
 
+                CancionDao cancionDao = new CancionDao();
+                try {
+                    int idCancion = Integer.parseInt(idCancionStr);
+
+                    cancionDao.crearFavorito(idCancion, nameCancion, bandaCancion);
+
+                    response.sendRedirect(request.getContextPath() + "/listaCanciones");
+
+                } catch (NumberFormatException e) {
+                    System.out.println("error al parsear");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("includes/cancionesFavoritas.jsp");
+                    requestDispatcher.forward(request, response);
+                }
+
+
+            }
+            case "" -> {
+
+            }
+
+        }
     }
 }
