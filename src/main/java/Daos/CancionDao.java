@@ -27,9 +27,9 @@ public class CancionDao {
 
             while (rs.next()) {
                 Cancion cancion = new Cancion();
-                cancion.setIdCancion(rs.getString(1));
+                cancion.setIdCancion(rs.getInt(1));
                 cancion.setNombre_cancion(rs.getString(2));
-                cancion.setNombre_banda(rs.getInt(3));
+                cancion.setNombre_banda(rs.getString(3));
                 listaCanciones.add(cancion);
             }
         } catch (SQLException e) {
