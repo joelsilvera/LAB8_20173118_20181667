@@ -21,7 +21,7 @@
         <div class='container'>
         <!--Colocar como value: artistas, canciones, bandas, tours o tpc  (dependiendo de la pagina a la que corresponda) -->
         <jsp:include page="/includes/navbar.jsp">
-            <jsp:param name="page" value=""/>
+            <jsp:param name="page" value="recomendados"/>
         </jsp:include>
         <div class="pb-5 pt-4 px-3 titlecolor d-flex justify-content-between align-items-center">
         <div class="col-lg-6">
