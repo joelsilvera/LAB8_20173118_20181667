@@ -7,16 +7,14 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class RecomendadoDao {
-    private static String user = "root";
-    private static String pass = "root";
-    private static String url = "jdbc:mysql://localhost:3306/lab6sw1";
+
 
     //En este caso se usa preparedStatement
     public static ArrayList<Cancion> obtenerListaRecomendados() {
         ArrayList<Cancion> listarecomendados = new ArrayList<>();
          String user = "root";
          String pass = "root";
-         String url = "jdbc:mysql://localhost:3306/lab6sw1";
+         String url = "jdbc:mysql://localhost:3306/lab6sw1?serverTimezone=America/Lima";
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -33,8 +31,12 @@ public class RecomendadoDao {
                      "count(*) >2 order by count(*) desc");) {
 
             while (rs.next()) {
-                Cancion recomendado = new Cancion(rs.getInt(1), rs.getString(2), rs.getString(3));
-                listarecomendados.add(recomendado);
+
+                Cancion cancion = new Cancion();
+                cancion.setIdCancion(rs.getInt(1));
+                cancion.setNombre_cancion(rs.getString(2));
+                cancion.setNombre_banda(rs.getString(3));
+                listarecomendados.add(cancion);
             }
 
         } catch (SQLException e) {
