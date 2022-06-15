@@ -41,7 +41,7 @@
                     <tbody>
                         <% int i = 1;
                             for (Cancion cancion : listaCanciones) { %>
-                        <tr method="POST" action="<%=request.getContextPath()%>/listaCanciones?a=addFavorito">
+                        <tr>
                             <td name="idCancion" id="idCancion"><%=cancion.getIdCancion()%>
                             </td >
                             <td name="nameCancion" id="nameCancion"><%=cancion.getNombre_cancion()%>
@@ -49,7 +49,7 @@
                             <td name="bandaCancion" id="bandaCancion"><%=cancion.getNombre_banda()%>
                             </td>
                             <td name="esFavorito" id="esFavorito">
-                                <button name="button" style = background-color:darkred>Ya no me gusta</button>
+                                <a href="<%=request.getContextPath()%>/listaCanciones?a=actualizaraNo&id=<%=cancion.getIdCancion()%>" class="btn btn-danger">Ya no me gusta</a>
                             </td>
                         </tr>
                         <% i++;

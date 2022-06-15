@@ -1,7 +1,7 @@
 <%@ page import="java.util.Calendar" %>
 <%@ page import="Beans.Cancion" %>
 <%@ page import="java.util.ArrayList" %>
-<jsp:useBean id="cancion" scope="request" type=""
+
 <%--
   Created by IntelliJ IDEA.
   User: joels
@@ -53,9 +53,9 @@
                             </td>
                             <td name="esFavorito" id="esFavorito">
                                 <%if(cancion.getEs_favorito().equalsIgnoreCase("No")){%>
-                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=editarFavorito&id=<%=cancion.getIdCancion()%>" class="btn btn-success ms-auto">Me gusta</a>
+                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=actualizaraYes&id=<%=cancion.getIdCancion()%>" class="btn btn-success ms-auto">Me gusta</a>
                                 <%}else{%>
-                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=editarFavorito&id=<%=cancion.getIdCancion()%>" class="btn btn-danger">Ya no me gusta</a>
+                                    <a href="<%=request.getContextPath()%>/listaCanciones?a=actualizaraNo&id=<%=cancion.getIdCancion()%>" class="btn btn-danger">Ya no me gusta</a>
                                 <%}%>
                             </td>
                         </tr>
